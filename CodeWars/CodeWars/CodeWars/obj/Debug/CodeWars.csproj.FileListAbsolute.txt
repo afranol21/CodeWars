@@ -1,6 +1,0 @@
-c:\users\z00427zs\documents\visual studio 2015\Projects\CodeWars\CodeWars\bin\Debug\CodeWars.exe.config
-c:\users\z00427zs\documents\visual studio 2015\Projects\CodeWars\CodeWars\bin\Debug\CodeWars.exe
-c:\users\z00427zs\documents\visual studio 2015\Projects\CodeWars\CodeWars\bin\Debug\CodeWars.pdb
-c:\users\z00427zs\documents\visual studio 2015\Projects\CodeWars\CodeWars\obj\Debug\CodeWars.csprojResolveAssemblyReference.cache
-c:\users\z00427zs\documents\visual studio 2015\Projects\CodeWars\CodeWars\obj\Debug\CodeWars.exe
-c:\users\z00427zs\documents\visual studio 2015\Projects\CodeWars\CodeWars\obj\Debug\CodeWars.pdb
