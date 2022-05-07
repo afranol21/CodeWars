@@ -21,17 +21,60 @@ namespace CodeWars
             var res9 = KataKyu7.ArrayDiff(new int[] { 2 }, new int[] { 1, 2 });
             var res10 = KataKyu7.CreatePhoneNumber(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 });
             var res11 = KataKyu7.GetReadableTime(359999);
+            var res12 = KataKyu7.IsValidString("{[]}");
+            var res13 = KataKyu7.IsValidString("()[]]{}");
+            var res14 = KataKyu7.IsValidString("([)]");
+            var res15 = KataKyu7.IsValidString("((");
         }
     }
 
     [TestFixture]
     public class KataKyu7
     {
-        /// <summary>
-        /// https://www.codewars.com/kata/52685f7382004e774f0001f7
-        /// D2 means pad to 2 places
-        /// </summary>
-        public static string GetReadableTime(int seconds) =>
+        //https://leetcode.com/problems/valid-parentheses/
+        public static bool IsValidString(string s)
+        {
+            if (s.Length % 2 != 0)
+                return false;
+
+            var charStack = new Stack<char>();
+
+            foreach (var actualChar in s)
+            {
+                if ("([{".Contains(actualChar))
+                {
+                    charStack.Push(actualChar);
+                    continue;
+                }
+                else
+                {
+                    if (charStack.Count > 0)
+                    {
+                        var expectedEnding = charStack.Peek() switch
+                        {
+                            '(' => ')',
+                            '[' => ']',
+                            '{' => '}',
+                            _ => '\0'
+                        };
+
+                        if (expectedEnding == '\0' || actualChar != expectedEnding)
+                            return false;
+
+                        charStack.Pop();
+                    }
+                    else
+                        return false;
+                }
+            }
+            return !charStack.Any();
+        }
+
+    /// <summary>
+    /// https://www.codewars.com/kata/52685f7382004e774f0001f7
+    /// D2 means pad to 2 places
+    /// </summary>
+    public static string GetReadableTime(int seconds) =>
             string.Format("{0:d2}:{1:d2}:{2:d2}", seconds / 3600, seconds / 60 % 60, seconds % 60);
         public static string GetReadableTimeMine(int seconds)
         {
