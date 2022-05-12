@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Net;
+using System.Text;
 
 namespace CodeWars
 {
@@ -25,12 +27,26 @@ namespace CodeWars
             var res13 = KataKyu7.IsValidString("()[]]{}");
             var res14 = KataKyu7.IsValidString("([)]");
             var res15 = KataKyu7.IsValidString("((");
+            var res17 = KataKyu7.Alphanumeric("");
+            var res18 = KataKyu7.UInt32ToIP(2154959208);
         }
     }
 
     [TestFixture]
     public class KataKyu7
     {
+        //https://www.codewars.com/kata/52e88b39ffb6ac53a400022e
+        public static string UInt32ToIP(uint ip) =>
+              IPAddress.Parse(ip.ToString()).ToString();
+
+        //https://www.codewars.com/kata/526dbd6c8c0eb53254000110
+        //Checks if string only contains alphabets numbers and not empty
+        //With regex
+        //public static bool Alphanumeric(string str) =>
+        //    new Regex("^[a-zA-Z0-9]+$").Match(str).Success;
+        public static bool Alphanumeric(string str) =>
+            str.All(c => Char.IsLetterOrDigit(c)) && !string.IsNullOrEmpty(str);
+
         //https://leetcode.com/problems/valid-parentheses/
         public static bool IsValidString(string s)
         {
