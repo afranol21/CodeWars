@@ -1,9 +1,11 @@
 ﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Net;
+using System.Numerics;
 using System.Text;
 
 namespace CodeWars
@@ -29,12 +31,24 @@ namespace CodeWars
             var res15 = KataKyu7.IsValidString("((");
             var res17 = KataKyu7.Alphanumeric("");
             var res18 = KataKyu7.UInt32ToIP(2154959208);
+            var res19 = KataKyu7.MoveZeroes(new int[] { 1, 2, 0, 1, 0, 1, 0, 3, 0, 1 });
+            var res20 = KataKyu7.Add("123456789", "987654322");
         }
     }
 
     [TestFixture]
     public class KataKyu7
     {
+        //https://www.codewars.com/kata/525f4206b73515bffb000b21
+        public static string Add(string a, string b)
+        {
+            return (BigInteger.Parse(a) + BigInteger.Parse(b)).ToString(); // Fix this!
+        }
+
+        //https://www.codewars.com/kata/52597aa56021e91c93000cb0
+        public static int[] MoveZeroes(int[] arr) =>
+            arr.OrderBy(x => x == 0).ToArray();
+
         //https://www.codewars.com/kata/52e88b39ffb6ac53a400022e
         public static string UInt32ToIP(uint ip) =>
               IPAddress.Parse(ip.ToString()).ToString();
